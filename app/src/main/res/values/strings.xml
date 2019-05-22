@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">NYC Schools</string>
+
+    <!-- Empty views -->
+    <string name="no_data"><b>OOPs!!</b></string>
+    <string name="no_data_1"><b>No School data available!!</b></string>
+    <string name="no_internet_connection"><b>No Internet Connection</b></string>
+
+    <!-- Score Details Labels -->
+    <string name="total_test_takers">Total Test Takers</string>
+    <string name="average_writing_score">Average Writing Score</string>
+    <string name="average_reading_scores">Average Reading Score</string>
+    <string name="average_math_score">Average Math Score</string>
+
+    <string name="single_space">\u0020</string>
+    <string name="colon_space">:\u0020</string>
+</resources>

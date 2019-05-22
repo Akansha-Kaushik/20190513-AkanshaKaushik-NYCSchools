@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dimen_16dp">
+
+    <TextView
+        android:id="@+id/text_view_school_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dimen_16dp"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/dimen_24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_view_total_test_takers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_16dp"
+        android:textSize="@dimen/dimen_16sp" />
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/list_loading_progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/text_view_writing_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_16dp"
+        android:textSize="@dimen/dimen_16sp" />
+
+    <TextView
+        android:id="@+id/text_view_reading_score"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_16dp"
+        android:textSize="@dimen/dimen_16sp" />
+
+    <TextView
+        android:id="@+id/text_view_math_score"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_16dp"
+        android:textSize="@dimen/dimen_16sp" />
+
+
+</LinearLayout>
