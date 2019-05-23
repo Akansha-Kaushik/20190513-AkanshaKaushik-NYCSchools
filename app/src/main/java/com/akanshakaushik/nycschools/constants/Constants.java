@@ -9,6 +9,7 @@ public interface Constants {
      * The Service Constants will contain all service/API related constants.
      */
     @interface Service {
+        String BASE_URL = "https://data.cityofnewyork.us/resource/";
         String PATH_SCHOOL_LISTS = "s3k6-pzi2.json";
         String PATH_SCORE_DETAILS = "f9bf-2cp4.json";
         String QUERY_DBN = "dbn";

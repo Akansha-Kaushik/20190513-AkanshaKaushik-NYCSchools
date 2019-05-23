@@ -9,6 +9,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.akanshakaushik.nycschools.constants.Constants.Service.BASE_URL;
+
 /**
  * ApiNetworkClient class is main Retrofit Api Client with Singleton instance
  */
@@ -29,7 +31,6 @@ public class ApiNetworkClient {
      * @return - return network client.
      */
     public static IApiNetworkClient getNetworkClient() {
-        String baseUrl = BuildConfig.BASE_URL;
         if (retrofit == null) {
             retrofit = new Retrofit.Builder();
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -42,7 +43,7 @@ public class ApiNetworkClient {
             retrofit.client(httpClient.build());
             retrofit.addConverterFactory(GsonConverterFactory.create());
         }
-        retrofit.baseUrl(baseUrl);
+        retrofit.baseUrl(BASE_URL);
         return retrofit.build().create(IApiNetworkClient.class);
     }
 }
