@@ -2,6 +2,7 @@ package com.akanshakaushik.nycschools.views.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -81,6 +82,25 @@ public class SchoolsListAdapter extends RecyclerView.Adapter<SchoolsListAdapter.
     }
 
     /**
+     * Clear all data (a list of {@link School} object)
+     */
+    public void clearAll() {
+        schoolsList.clear();
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Update RecyclerView data
+     *
+     * @param schools is the data source of the adapter.
+     */
+    public void addAll(List<School> schools) {
+        schoolsList.clear();
+        schoolsList.addAll(schools);
+        notifyDataSetChanged();
+    }
+
+    /**
      * Include the RecyclerView ViewHolder
      * Represents the data that is to be shown with the ViewHolder.
      */
@@ -111,6 +131,8 @@ public class SchoolsListAdapter extends RecyclerView.Adapter<SchoolsListAdapter.
         private ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            textViewPhoneNumber.setPaintFlags(textViewPhoneNumber.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            textViewAddress.setPaintFlags(textViewAddress.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             cardView.setOnClickListener(this);
             textViewPhoneNumber.setOnClickListener(this);
             textViewAddress.setOnClickListener(this);
@@ -133,12 +155,16 @@ public class SchoolsListAdapter extends RecyclerView.Adapter<SchoolsListAdapter.
                 case R.id.item_phone_number:
                     Intent dialIntent = new Intent(Intent.ACTION_DIAL);
                     dialIntent.setData(Uri.parse("tel:" + phoneNumber));
-                    context.startActivity(dialIntent);
+                    if (dialIntent.resolveActivity(context.getPackageManager()) != null) {
+                        context.startActivity(dialIntent);
+                    }
                     break;
                 case R.id.item_address:
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             Uri.parse("geo:0,0?q=" + address));
-                    context.startActivity(intent);
+                    if (intent.resolveActivity(context.getPackageManager()) != null) {
+                        context.startActivity(intent);
+                    }
                     break;
                 default:
             }
@@ -163,24 +189,5 @@ public class SchoolsListAdapter extends RecyclerView.Adapter<SchoolsListAdapter.
                 this.textViewAddress.setVisibility(View.GONE);
             }
         }
-    }
-
-    /**
-     * Clear all data (a list of {@link School} object)
-     */
-    public void clearAll() {
-        schoolsList.clear();
-        notifyDataSetChanged();
-    }
-
-    /**
-     * Update RecyclerView data
-     *
-     * @param schools is the data source of the adapter.
-     */
-    public void addAll(List<School> schools) {
-        schoolsList.clear();
-        schoolsList.addAll(schools);
-        notifyDataSetChanged();
     }
 }
